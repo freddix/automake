@@ -1,0 +1,33 @@
+--- automake-1.8.4/automake.in.orig	2004-04-10 19:15:32.000000000 +0200
++++ automake-1.8.4/automake.in	2004-04-29 02:33:26.305817840 +0200
+@@ -31,7 +31,7 @@
+ 
+ BEGIN
+ {
+-  my $perllibdir = $ENV{'perllibdir'} || '@datadir@/@PACKAGE@-@APIVERSION@';
++  my $perllibdir = $ENV{'perllibdir'} || '@datadir@/@PACKAGE@';
+   unshift @INC, (split '@PATH_SEPARATOR@', $perllibdir);
+ 
+   # Override SHELL.  This is required on DJGPP so that system() uses
+--- automake-1.10/aclocal.in.orig	2006-10-15 18:19:37.000000000 +0200
++++ automake-1.10/aclocal.in	2006-10-26 23:03:13.812673500 +0200
+@@ -30,7 +30,7 @@
+ 
+ BEGIN
+ {
+-  my $perllibdir = $ENV{'perllibdir'} || '@datadir@/@PACKAGE@-@APIVERSION@';
++  my $perllibdir = $ENV{'perllibdir'} || '@datadir@/@PACKAGE@';
+   unshift @INC, (split '@PATH_SEPARATOR@', $perllibdir);
+ }
+ 
+--- automake-1.10/lib/Automake/Config.in.orig	2005-05-14 21:52:09.000000000 +0200
++++ automake-1.10/lib/Automake/Config.in	2006-10-26 23:07:50.717979000 +0200
+@@ -28,7 +28,7 @@
+ our $APIVERSION = '@APIVERSION@';
+ our $PACKAGE = '@PACKAGE@';
+ our $VERSION = '@VERSION@';
+-our $libdir = '@datadir@/@PACKAGE@-@APIVERSION@';
++our $libdir = '@datadir@/@PACKAGE@';
+ our $perl_threads = @PERL_THREADS@;
+ 
+ 1;;
