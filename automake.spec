@@ -1,28 +1,28 @@
 %bcond_without	regeneration
+%bcond_without	tests
 
 %include	/usr/lib/rpm/macros.perl
 
 Summary:	GNU automake - Makefile configuration tools
 Name:		automake
-Version:	1.11.3
-Release:	4
+Version:	1.12.4
+Release:	3
 Epoch:		1
 License:	GPL v2+
 Group:		Development/Building
 Source0:	http://ftp.gnu.org/gnu/automake/%{name}-%{version}.tar.xz
-# Source0-md5:	3d72b2076eb4397ad5e9a2aace6357fd
+# Source0-md5:	7395a0420ecb5c9bc43e5fcf4824df36
 Patch0:		%{name}-no_versioned_dir.patch
 URL:		http://sources.redhat.com/automake/
 %if %{with regeneration}
-BuildRequires:	autoconf
-BuildRequires:	automake >= 1:1.11.3
+BuildRequires:	autoconf >= 2.69
+BuildRequires:	automake >= 1:1.12.0
 %endif
 BuildRequires:	rpm-perlprov
 BuildRequires:	texinfo
-Requires(pre):	fileutils
 Requires:	filesystem
 Requires:	perl(File::Glob)
-#BuildArch:	noarch -- autoconf doesn't allow
+BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_aclocaldir	%{_datadir}/aclocal
@@ -51,11 +51,15 @@ ln -s ../m4/[!a]*.m4 ../m4/a[!m]*.m4 .
 %if %{with regeneration}
 %{__automake}
 %endif
-%configure
+%configure \
+	--host=%{_host} \
+	--build=%{_host}
 %{__make}
 
+%if %{with tests}
 %check
-%{__make} -j1 check
+%{__make} check
+%endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -77,10 +81,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog NEWS README THANKS TODO
+%doc AUTHORS ChangeLog NEWS README THANKS
 %attr(755,root,root) %{_bindir}/aclocal*
 %attr(755,root,root) %{_bindir}/automake*
 %{_infodir}/automake.info*
+%{_infodir}/automake-history.info*
 %{_mandir}/man1/aclocal*.1*
 %{_mandir}/man1/automake*.1*
 
@@ -91,11 +96,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/automake/COPYING
 %{_datadir}/automake/INSTALL
 %{_datadir}/automake/texinfo.tex
-%{_datadir}/automake/ansi2knr*
-%attr(755,root,root) %{_datadir}/automake/acinstall
 %attr(755,root,root) %{_datadir}/automake/ar-lib
 %attr(755,root,root) %{_datadir}/automake/compile
-%attr(755,root,root) %{_datadir}/automake/config-ml.in
 %attr(755,root,root) %{_datadir}/automake/config.guess
 %attr(755,root,root) %{_datadir}/automake/config.sub
 %attr(755,root,root) %{_datadir}/automake/depcomp
@@ -105,6 +107,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_datadir}/automake/missing
 %attr(755,root,root) %{_datadir}/automake/mkinstalldirs
 %attr(755,root,root) %{_datadir}/automake/py-compile
-%attr(755,root,root) %{_datadir}/automake/symlink-tree
+%attr(755,root,root) %{_datadir}/automake/tap-driver.pl
+%attr(755,root,root) %{_datadir}/automake/tap-driver.sh
+%attr(755,root,root) %{_datadir}/automake/test-driver
 %attr(755,root,root) %{_datadir}/automake/ylwrap
 

@@ -20,14 +20,14 @@
    unshift @INC, (split '@PATH_SEPARATOR@', $perllibdir);
  }
  
---- automake-1.10/lib/Automake/Config.in.orig	2005-05-14 21:52:09.000000000 +0200
-+++ automake-1.10/lib/Automake/Config.in	2006-10-26 23:07:50.717979000 +0200
-@@ -28,7 +28,7 @@
- our $APIVERSION = '@APIVERSION@';
- our $PACKAGE = '@PACKAGE@';
+--- automake-1.12.1/lib/Automake/Config.in.orig	2012-06-01 15:47:09.000000000 +0200
++++ automake-1.12.1/lib/Automake/Config.in	2012-06-03 07:49:50.581740616 +0200
+@@ -32,7 +32,7 @@
+ our $PACKAGE_BUGREPORT = '@PACKAGE_BUGREPORT@';
  our $VERSION = '@VERSION@';
+ our $RELEASE_YEAR = '@RELEASE_YEAR@';
 -our $libdir = '@datadir@/@PACKAGE@-@APIVERSION@';
 +our $libdir = '@datadir@/@PACKAGE@';
  our $perl_threads = @PERL_THREADS@;
  
- 1;;
+ 1;
