@@ -3,20 +3,24 @@
 
 %include	/usr/lib/rpm/macros.perl
 
+%if %{without regeneration}
+%unglobal	with_tests
+%endif
+
 Summary:	GNU automake - Makefile configuration tools
 Name:		automake
-Version:	1.12.6
+Version:	1.13.1
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		Development/Building
 Source0:	http://ftp.gnu.org/gnu/automake/%{name}-%{version}.tar.xz
-# Source0-md5:	140e084223bf463a24c1a28427c6aec7
+# Source0-md5:	a60380ab11e1481376b7747d1b42ced2
 Patch0:		%{name}-no_versioned_dir.patch
 URL:		http://sources.redhat.com/automake/
 %if %{with regeneration}
 BuildRequires:	autoconf >= 2.69
-BuildRequires:	automake >= 1:1.12.0
+BuildRequires:	automake >= 1:1.13.0
 %endif
 BuildRequires:	rpm-perlprov
 BuildRequires:	texinfo
@@ -101,7 +105,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_datadir}/automake/config.guess
 %attr(755,root,root) %{_datadir}/automake/config.sub
 %attr(755,root,root) %{_datadir}/automake/depcomp
-%attr(755,root,root) %{_datadir}/automake/elisp-comp
 %attr(755,root,root) %{_datadir}/automake/install-sh
 %attr(755,root,root) %{_datadir}/automake/mdate-sh
 %attr(755,root,root) %{_datadir}/automake/missing
