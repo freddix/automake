@@ -9,13 +9,13 @@
 
 Summary:	GNU automake - Makefile configuration tools
 Name:		automake
-Version:	1.13.1
+Version:	1.13.2
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		Development/Building
 Source0:	http://ftp.gnu.org/gnu/automake/%{name}-%{version}.tar.xz
-# Source0-md5:	a60380ab11e1481376b7747d1b42ced2
+# Source0-md5:	497f3ea7e85504fe5b1b1b6d27cc71f1
 Patch0:		%{name}-no_versioned_dir.patch
 URL:		http://sources.redhat.com/automake/
 %if %{with regeneration}
