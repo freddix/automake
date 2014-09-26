@@ -1,3 +1,5 @@
+# based on PLD Linux spec git://git.pld-linux.org/packages/automake.git
+
 %bcond_without	regeneration
 %bcond_without	tests
 
@@ -10,7 +12,7 @@
 Summary:	GNU automake - Makefile configuration tools
 Name:		automake
 Version:	1.14.1
-Release:	1
+Release:	2
 Epoch:		1
 License:	GPL v2+
 Group:		Development/Building
