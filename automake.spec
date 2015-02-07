@@ -11,13 +11,13 @@
 
 Summary:	GNU automake - Makefile configuration tools
 Name:		automake
-Version:	1.14.1
-Release:	2
+Version:	1.15
+Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		Development/Building
 Source0:	http://ftp.gnu.org/gnu/automake/%{name}-%{version}.tar.xz
-# Source0-md5:	7fc29854c520f56b07aa232a0f880292
+# Source0-md5:	9a1ddb0e053474d9d1105cfe39b0c48d
 Patch0:		%{name}-no_versioned_dir.patch
 URL:		http://sources.redhat.com/automake/
 %if %{with regeneration}
@@ -112,7 +112,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_datadir}/automake/missing
 %attr(755,root,root) %{_datadir}/automake/mkinstalldirs
 %attr(755,root,root) %{_datadir}/automake/py-compile
-%attr(755,root,root) %{_datadir}/automake/tap-driver.pl
 %attr(755,root,root) %{_datadir}/automake/tap-driver.sh
 %attr(755,root,root) %{_datadir}/automake/test-driver
 %attr(755,root,root) %{_datadir}/automake/ylwrap
